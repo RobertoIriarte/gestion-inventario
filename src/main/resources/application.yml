@@ -13,17 +13,14 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
-    #url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
-    #username: ${DB_USER}
-    #password: ${DB_PASSWORD}
-    url: jdbc:mysql://junction.proxy.rlwy.net:36467/railway
-    username: root
-    password: oSXnCMpjtCHgkYJQPwjGpFQYpEoYmYag
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
 
 application:
   security:
     jwt:
-      secret-key: xpM5DnESFceYGit3r7J0ni6vgDAQ4QcJZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
+      secret-key: ${JWT_SECRET_KEY}
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
