@@ -1,3 +1,4 @@
+
 spring:
   user:
     datasource.driver-class-name: com.mysql.jdbc.driver

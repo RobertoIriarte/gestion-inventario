@@ -3,6 +3,11 @@ package com.ventas.code.service;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +32,8 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(AuthService.class);
+
     public TokenResponse register(final RegisterRequest request) {
         final Usuario user = Usuario.builder()
                 .nombre(request.name())
@@ -42,12 +49,12 @@ public class AuthService {
         return new TokenResponse(jwtToken, refreshToken);
     }
 
-    public TokenResponse authenticate(final AuthRequest request) {
+    public ResponseEntity<TokenResponse> authenticate(final AuthRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.email(),
-                        request.password()
-                )
+            new UsernamePasswordAuthenticationToken(
+                    request.email(),
+                    request.password()
+            )
         );
         final Usuario user = repository.findByEmail(request.email())
                 .orElseThrow();
@@ -55,7 +62,7 @@ public class AuthService {
         final String refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, accessToken);
-        return new TokenResponse(accessToken, refreshToken);
+        return new ResponseEntity<>(new TokenResponse(accessToken, refreshToken),HttpStatus.OK);
     }
 
     private void saveUserToken(Usuario user, String jwtToken) {

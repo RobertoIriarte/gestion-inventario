@@ -23,7 +23,7 @@ public class Categoria {
   @Column
   private String descripcion; 
   
-  @Column(unique = true)
-  private String sku; 
+  /*@Column(unique = true)
+  private String sku; */
 
 }

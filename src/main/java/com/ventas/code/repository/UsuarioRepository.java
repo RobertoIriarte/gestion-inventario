@@ -8,6 +8,6 @@ import com.ventas.code.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    Optional<Usuario> findByEmail(String email);
+    public Optional<Usuario> findByEmail(String email);
     
 }

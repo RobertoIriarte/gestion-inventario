@@ -1,5 +1,7 @@
 package com.ventas.code.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +29,8 @@ public class AppConfig {
     public UserDetailsService userDetailsService() {
         return username -> {
             final Usuario user = repository.findByEmail(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"))
+                    ;       
             return org.springframework.security.core.userdetails.User
                     .builder()
                     .username(user.getEmail())

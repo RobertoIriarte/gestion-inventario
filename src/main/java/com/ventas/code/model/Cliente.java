@@ -1,5 +1,7 @@
 package com.ventas.code.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,5 +23,23 @@ public class Cliente {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cliente_id;
+
+    @Column(name = "rut", length = 9)
+    private String rut;
+
+    @Column(name = "dv", length = 1)
+    private String dv;
+
+    @Column
+    private String nombre;
+    
+    @Column
+    private String correo;
+
+    @Column(columnDefinition = "TINYINT")
+    private Byte activo;
+
+    @Column
+    private LocalDate fechaCreacion;
     
 }

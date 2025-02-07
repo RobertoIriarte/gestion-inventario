@@ -1,6 +1,9 @@
 package com.ventas.code.controller;
 
 import lombok.RequiredArgsConstructor;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import com.ventas.code.utils.TokenResponse;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
+    
+    private static  final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
     private final AuthService service;
 
@@ -25,8 +30,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenResponse> authenticate(@RequestBody AuthRequest request) {
-        final TokenResponse response = service.authenticate(request);
-        return ResponseEntity.ok(response);
+        //final TokenResponse response = service.authenticate(request);
+        return service.authenticate(request);
+        //return ResponseEntity.ok(response);
     }
 
     @PostMapping("/refresh-token")

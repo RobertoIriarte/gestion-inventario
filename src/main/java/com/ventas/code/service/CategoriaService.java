@@ -29,14 +29,14 @@ public class CategoriaService {
     }
   }
   
-  public Categoria encontrarCategoriaPorSku(String sku){
+  /*public Categoria encontrarCategoriaPorSku(String sku){
     return categoriaRepository.findBySku(sku);
-  }
+  }*/
   
   public Categoria actualizarCategoria(Categoria categoria){
     if(!categoriaRepository.findById(categoria.getCategoria_id()).isEmpty()){
       Categoria categoriaActualizar = categoriaRepository.findById(categoria.getCategoria_id()).get();
-      categoriaActualizar.setSku(categoria.getSku());
+      //categoriaActualizar.setSku(categoria.getSku());
       categoriaActualizar.setNombre(categoria.getNombre());
       categoriaActualizar.setDescripcion(categoria.getDescripcion());
     return categoriaRepository.save(categoriaActualizar);

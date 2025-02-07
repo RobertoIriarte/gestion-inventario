@@ -30,11 +30,6 @@ public class CategoriaController {
     return categoriaService.encontrarCategoriaPorId(categoria_id);
   }
   
-  @GetMapping("/encontrarCategoriaPorSku/{sku}")
-  public Categoria encontrarCategoriaPorSku(@PathVariable String sku){
-    return categoriaService.encontrarCategoriaPorSku(sku);
-  }
-  
   @PutMapping("/actualizarCategoria")
   public Categoria actualizarCategoria(@RequestBody Categoria categoria){
     return categoriaService.actualizarCategoria(categoria);

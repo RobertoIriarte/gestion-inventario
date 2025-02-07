@@ -1,5 +1,7 @@
 package com.ventas.code.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,31 +19,26 @@ public class Producto {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long producto_id;
   
-  @ManyToOne(cascade = CascadeType.ALL ) @JoinColumn(name="categoria_id")
+  @ManyToOne(cascade = CascadeType.ALL ) 
+  @JoinColumn(name="categoria_id")
   private Categoria categoria;
   
-  @Column
-  private double precio;
-  
+  @Column(length = 15, unique = true)
+  private String codigo;
+
   @Column
   private String nombre;
-  
+
   @Column
-  private String marca;
-  
-  @Column(length = 2000)
-  private String descripcion;
-  
-  @Column(columnDefinition = "TEXT")
-  private String imagen;
-  
+  private Double precio;
+
   @Column
-  private String ficha_tecnica;
-  
-  @Column(unique = true)
-  private String sku;
-  
+  private Double stock;
+
+  @Column(columnDefinition = "TINYINT")
+  private Byte activo;
+
   @Column
-  private int stock;
+  private LocalDate fechaCreacion;
   
 }
