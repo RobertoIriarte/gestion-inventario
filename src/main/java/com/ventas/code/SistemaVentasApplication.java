@@ -24,7 +24,7 @@ public class SistemaVentasApplication {
 				// Permitir solicitudes desde cualquier origen
                 .allowedOrigins("*") 
 				// Establece los encabezados permitidos
-                .allowedMethods("GET", "POST", "PUT", "DELETE"); 
+                .allowedMethods("GET", "OPTIONS", "POST", "PUT", "DELETE"); 
     }
 			};
 		}
