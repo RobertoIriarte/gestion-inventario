@@ -19,10 +19,13 @@ public class SistemaVentasApplication {
 		public WebMvcConfigurer corsConfigurer(){
 			return new WebMvcConfigurer() {
 				@Override
-				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/**")
-							.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
-				}
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+				// Permitir solicitudes desde cualquier origen
+                .allowedOrigins("*") 
+				// Establece los encabezados permitidos
+                .allowedMethods("GET", "POST", "PUT", "DELETE"); 
+    }
 			};
 		}
 	}
