@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.ventas.code.service.AuthService;
 import com.ventas.code.utils.AuthRequest;
 import com.ventas.code.utils.RegisterRequest;
+import com.ventas.code.utils.ResponseMessage;
 import com.ventas.code.utils.TokenResponse;
 
 @RestController
@@ -29,7 +30,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenResponse> authenticate(@RequestBody AuthRequest request) {
+    public ResponseEntity<ResponseMessage> authenticate(@RequestBody AuthRequest request) {
         //final TokenResponse response = service.authenticate(request);
         return service.authenticate(request);
         //return ResponseEntity.ok(response);

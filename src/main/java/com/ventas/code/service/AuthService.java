@@ -19,6 +19,7 @@ import com.ventas.code.repository.TokenRepository;
 import com.ventas.code.repository.UsuarioRepository;
 import com.ventas.code.utils.AuthRequest;
 import com.ventas.code.utils.RegisterRequest;
+import com.ventas.code.utils.ResponseMessage;
 import com.ventas.code.utils.TokenResponse;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class AuthService {
         return new TokenResponse(jwtToken, refreshToken);
     }
 
-    public ResponseEntity<TokenResponse> authenticate(final AuthRequest request) {
+    public ResponseEntity<ResponseMessage> authenticate(final AuthRequest request) {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                     request.email(),
@@ -62,7 +63,8 @@ public class AuthService {
         final String refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, accessToken);
-        return new ResponseEntity<>(new TokenResponse(accessToken, refreshToken),HttpStatus.OK);
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK.value(), new TokenResponse(accessToken, refreshToken)));
+        //return new ResponseEntity<>(new TokenResponse(accessToken, refreshToken),HttpStatus.OK);
     }
 
     private void saveUserToken(Usuario user, String jwtToken) {
