@@ -12,7 +12,6 @@ import com.ventas.code.utils.UsuarioResponse;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
