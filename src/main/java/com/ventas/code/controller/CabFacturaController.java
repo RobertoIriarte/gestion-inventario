@@ -10,8 +10,9 @@ import com.ventas.code.utils.ResponseMessage;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/cab-factura")
+@RequestMapping("/api/v1/cab-factura")
 public class CabFacturaController {
 
     private final CabFacturaService cabFacturaService;

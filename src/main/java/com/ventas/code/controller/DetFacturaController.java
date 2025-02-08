@@ -10,8 +10,9 @@ import com.ventas.code.utils.ResponseMessage;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/det-factura")
+@RequestMapping("/api/v1/det-factura")
 public class DetFacturaController {
 
     private final DetFacturaService detFacturaService;

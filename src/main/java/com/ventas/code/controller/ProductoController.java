@@ -16,8 +16,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
-@RequestMapping(path= "api/v1/producto")
+@RequestMapping(path= "/api/v1/producto")
 public class ProductoController {
   
     @Autowired

@@ -14,8 +14,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
     @Autowired

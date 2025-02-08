@@ -14,6 +14,7 @@ import com.ventas.code.utils.RegisterRequest;
 import com.ventas.code.utils.ResponseMessage;
 import com.ventas.code.utils.TokenResponse;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor

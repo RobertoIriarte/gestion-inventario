@@ -8,6 +8,7 @@ import com.ventas.code.service.CategoriaService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path= "api/v1/categoria")
 public class CategoriaController {
