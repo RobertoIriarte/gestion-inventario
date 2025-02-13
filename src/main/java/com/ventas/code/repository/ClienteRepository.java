@@ -10,7 +10,7 @@ import com.ventas.code.model.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
-    @Query(value = "SELECT count(ruc_dni) as ruc_dni FROM facturacion.cliente where ruc_dni = :ruc_dni", nativeQuery = true)
-    public String verificarSiExiteCliente(@Param("ruc_dni") String ruc_dni);
+    @Query(value = "SELECT count(rut) as rut FROM cliente where rut = :rut", nativeQuery = true)
+    public String verificarSiExiteCliente(@Param("rut") String rut);
 
 }

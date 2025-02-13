@@ -36,8 +36,8 @@ public class ClienteService {
         this.clienteRepository.deleteById(id);
     }
 
-    public String verificarSiExiteCliente(String ruc_dni) {
-        return this.clienteRepository.verificarSiExiteCliente(ruc_dni);
+    public String verificarSiExiteCliente(String rut) {
+        return this.clienteRepository.verificarSiExiteCliente(rut);
     }
 
 }

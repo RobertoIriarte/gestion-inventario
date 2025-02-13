@@ -7,6 +7,6 @@ import com.ventas.code.model.CabFactura;
 
 public interface CabFacturaRepository extends JpaRepository<CabFactura, Integer> {
 
-    @Query(value = "SELECT COALESCE(MAX(num_factura), 0) + 1 as num_factura FROM facturacion.cab_factura", nativeQuery = true)
+    @Query(value = "SELECT COALESCE(MAX(num_factura), 0) + 1 as num_factura FROM cab_factura", nativeQuery = true)
     public Integer generaFactura();
 }

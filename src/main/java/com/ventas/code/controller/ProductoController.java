@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path= "/api/v1/producto")
+@RequestMapping(path= "/api/v1/productos")
 public class ProductoController {
   
     @Autowired
@@ -71,7 +71,7 @@ public class ProductoController {
     public Producto guardarProducto(@RequestBody ProductoDTO productoDTO) {
       Producto producto=new Producto();
       producto=productoDTO.obtenerProducto(productoDTO);
-      producto.setCategoria(categoriaService.encontrarCategoriaPorId(productoDTO.getCategoria_id()));
+      producto.setCategoria_id(productoDTO.getCategoria_id());
       return productoService.guardarProducto(producto);
     }
 

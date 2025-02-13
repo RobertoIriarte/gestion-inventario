@@ -43,8 +43,8 @@ public class ProductoService {
   }*/
   
   public List<Producto> encontrarProductosPorCategoria(Long id_categoria){
-    List<Categoria> categorias=categoriaRepository.findByCategoria(id_categoria);
-    return productoRepository.findByCategoria(categorias.get(0));
+    //List<Categoria> categorias=categoriaRepository.findByCategoria(id_categoria);
+    return productoRepository.findByCategoria(id_categoria);
   }
 
   public List<Producto> listarProducto() {

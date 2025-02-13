@@ -31,9 +31,9 @@ public class ClienteController {
         Optional<Cliente> cliente = this.clienteService.obtenerClientePorId(id);
         return cliente.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    @GetMapping("/verificar-cliente/{ruc_dni}")
-    public ResponseEntity<ResponseMessage> verificarSiExiteCliente(@PathVariable String ruc_dni) {
-        String verificarSiExiteCliente = this.clienteService.verificarSiExiteCliente(ruc_dni);
+    @GetMapping("/verificar-cliente/{rut}")
+    public ResponseEntity<ResponseMessage> verificarSiExiteCliente(@PathVariable String rut) {
+        String verificarSiExiteCliente = this.clienteService.verificarSiExiteCliente(rut);
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK.value(), verificarSiExiteCliente));
     }
 

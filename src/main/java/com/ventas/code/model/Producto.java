@@ -19,11 +19,10 @@ public class Producto {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long producto_id;
   
-  @ManyToOne(cascade = CascadeType.ALL ) 
-  @JoinColumn(name="categoria_id")
-  private Categoria categoria;
+  @Column
+  private Long categoria_id;
   
-  @Column(length = 15, unique = true)
+  @Column //(length = 15, unique = true)
   private String codigo;
 
   @Column

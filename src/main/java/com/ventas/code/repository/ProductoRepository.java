@@ -14,14 +14,15 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-  @Query(value = "SELECT codigo as cod_producto FROM facturacion.producto where codigo = :cod_producto", nativeQuery = true)
+  @Query(value = "SELECT codigo as cod_producto FROM producto where codigo = :cod_producto", nativeQuery = true)
   public String verificarSiExiteElCodProducto(@Param("cod_producto") String cod_producto);
 
   @Modifying
-  @Query(value = "UPDATE facturacion.producto SET stock = stock - :cantidad WHERE codigo = :id_producto", nativeQuery = true)
+  @Query(value = "UPDATE producto SET stock = stock - :cantidad WHERE codigo = :id_producto", nativeQuery = true)
   public Integer disminuirStock(@Param("id_producto") Long id_producto, @Param("cantidad") Integer cantidad);
   
   //public Producto findBySku(String sku);
   
-  public List<Producto> findByCategoria(Categoria categoria);
+  @Query(value = "SELECT * FROM producto where categoria_id = :categoria_id", nativeQuery = true)
+  public List<Producto> findByCategoria(Long categoria_id);
 }

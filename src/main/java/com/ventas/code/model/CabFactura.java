@@ -20,8 +20,8 @@ public class CabFactura {
     private Integer idFcatura;
     @Column(name = "num_factura")
     private Integer numeroFactura;
-    @Column(name = "ruc_cliente")
-    private String rucCliente;
+    @Column(name = "rut_cliente")
+    private String rutCliente;
 
     @Column(name = "subtotal", columnDefinition = "DECIMAL(10,2)")
     private String subtotal;
