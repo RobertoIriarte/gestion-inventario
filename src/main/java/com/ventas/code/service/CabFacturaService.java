@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.ventas.code.model.CabFactura;
 import com.ventas.code.repository.CabFacturaRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +40,9 @@ public class CabFacturaService {
 
     public Integer generaFactura() {
         return this.cabFacturaRepository.generaFactura();
+    }
+
+    public List<CabFactura> obtenerFacturasPorFecha(LocalDate fecha){
+        return this.cabFacturaRepository.obtenerFacturasPorFecha(fecha);
     }
 }

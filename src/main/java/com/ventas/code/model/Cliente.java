@@ -36,10 +36,10 @@ public class Cliente {
     @Column
     private String correo;
 
-    @Column(columnDefinition = "TINYINT")
-    private Byte activo;
-
     @Column
     private LocalDate fechaCreacion;
+
+    @Column(columnDefinition = "TINYINT")
+    private Byte activo;
     
 }

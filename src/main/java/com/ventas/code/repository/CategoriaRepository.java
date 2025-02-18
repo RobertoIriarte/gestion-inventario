@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
   
-  //Categoria findBySku(String sku);
+  
+  @Query(value = "SELECT * FROM categoria where activo = 1", nativeQuery = true)
+  public List<Categoria> findAllActivo();
   
   @Query("SELECT c FROM Categoria c WHERE c.categoria_id=?1")
   List<Categoria> findByCategoria(Long idCategotia);

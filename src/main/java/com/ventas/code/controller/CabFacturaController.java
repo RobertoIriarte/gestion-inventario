@@ -8,6 +8,7 @@ import com.ventas.code.model.CabFactura;
 import com.ventas.code.service.CabFacturaService;
 import com.ventas.code.utils.ResponseMessage;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -35,6 +36,7 @@ public class CabFacturaController {
 
     @PostMapping
     public ResponseEntity<CabFactura> guardarFactura(@RequestBody CabFactura cabFactura) {
+        cabFactura.setFechaCreacion(LocalDate.now());
         CabFactura facturaGuardada = cabFacturaService.guardarCabFactura(cabFactura);
         return new ResponseEntity<>(facturaGuardada, HttpStatus.CREATED);
     }
@@ -48,6 +50,12 @@ public class CabFacturaController {
     @GetMapping("/genera-factura")
     public ResponseEntity<ResponseMessage> generaFactura() {
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK.value(), this.cabFacturaService.generaFactura()));
+    }
+
+    @GetMapping("/{fecha}")
+    public ResponseEntity<List<CabFactura>> obtenerFacturaPorId(@PathVariable("fecha") LocalDate fecha) {
+        List<CabFactura> cabeceras = cabFacturaService.obtenerFacturasPorFecha(fecha);
+        return new ResponseEntity<>(cabeceras, HttpStatus.OK);
     }
 
 }

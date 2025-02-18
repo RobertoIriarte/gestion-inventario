@@ -18,12 +18,9 @@ import java.util.Optional;
 public class ProductoService {
   @Autowired
   private ProductoRepository productoRepository;
-
-  @Autowired
-  private CategoriaRepository categoriaRepository;
   
-  public List<Producto> consultarProductos(){
-    return productoRepository.findAll();
+  public List<Producto> consultarProductosVentas(){
+    return productoRepository.findAllActivoVentas();
   }
   
   public Producto guardarProducto(Producto producto) {
@@ -37,47 +34,46 @@ public class ProductoService {
       return null;
     }
   }
-
-  /*public Producto encontrarProductoPorSku(String sku){
-    return productoRepository.findBySku(sku);
-  }*/
   
   public List<Producto> encontrarProductosPorCategoria(Long id_categoria){
-    //List<Categoria> categorias=categoriaRepository.findByCategoria(id_categoria);
     return productoRepository.findByCategoria(id_categoria);
   }
 
-  public List<Producto> listarProducto() {
-        return (List<Producto>) this.productoRepository.findAll();
-    }
+  public List<Producto> listarProductosBodega() {
+      return (List<Producto>) this.productoRepository.findAllActivoBodega();
+  }
 
-    public Optional<Producto> obtenerProductoPorId(Long id) {
-        return this.productoRepository.findById(id);
-    }
+  public Optional<Producto> obtenerProductoPorId(Long id) {
+      return this.productoRepository.findById(id);
+  }
 
-    public Producto crearProducto(Producto producto) {
-        return this.productoRepository.save(producto);
-    }
+  public Producto crearProducto(Producto producto) {
+      return this.productoRepository.save(producto);
+  }
 
-    public void actualizarProducto(Producto producto) {
+  public void actualizarProducto(Producto producto) {
+      this.productoRepository.save(producto);
+  }
+
+  public void eliminarProducto(Long id) {
+      if(!productoRepository.findById(id).isEmpty()) {
+        Producto producto = productoRepository.findById(id).get();
+        producto.setActivo(Byte.parseByte("0"));
         this.productoRepository.save(producto);
-    }
+      }
+  }
 
-    public void eliminarProducto(Long id) {
-        this.productoRepository.deleteById(id);
-    }
-
-    public String verificarSiExiteElCodProducto(String cod_producto) {
-        return this.productoRepository.verificarSiExiteElCodProducto(cod_producto);
-    }
-    @Transactional
-    public void disminuirStock(List<DetFacturaDTO> detFacturaDTOs) {
-        for (DetFacturaDTO detFacturaDTO : detFacturaDTOs) {
-            System.out.println("detFacturaDTO::::" +detFacturaDTO.getCodigoProducto() + " " + detFacturaDTO.getCantidad());
-            this.productoRepository.disminuirStock(  detFacturaDTO.getCodigoProducto(),
-                    detFacturaDTO.getCantidad()
-            );
-        }
-    }
+  public String verificarSiExiteElCodProducto(String cod_producto) {
+      return this.productoRepository.verificarSiExiteElCodProducto(cod_producto);
+  }
+  @Transactional
+  public void disminuirStock(List<DetFacturaDTO> detFacturaDTOs) {
+      for (DetFacturaDTO detFacturaDTO : detFacturaDTOs) {
+          System.out.println("detFacturaDTO::::" +detFacturaDTO.getCodigoProducto() + " " + detFacturaDTO.getCantidad());
+          this.productoRepository.disminuirStock(  detFacturaDTO.getCodigoProducto(),
+                  detFacturaDTO.getCantidad()
+          );
+      }
+  }
 
 }

@@ -22,7 +22,7 @@ public class Producto {
   @Column
   private Long categoria_id;
   
-  @Column //(length = 15, unique = true)
+  @Column
   private String codigo;
 
   @Column
@@ -34,10 +34,19 @@ public class Producto {
   @Column
   private Double stock;
 
-  @Column(columnDefinition = "TINYINT")
-  private Byte activo;
+  @Column
+  private Double stockCritico;
 
   @Column
   private LocalDate fechaCreacion;
+
+  @Column
+  private LocalDate fechaElaboracion;
+
+  @Column
+  private LocalDate fechaVencimiento;
+
+  @Column(columnDefinition = "TINYINT")
+  private Byte activo;
   
 }

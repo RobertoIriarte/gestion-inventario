@@ -23,17 +23,19 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
     
-    @Autowired
-    private CategoriaService categoriaService;
-    
     @GetMapping("/encontrarProductosPorCategoria/{id_categoria}")
     public List<Producto> encontrarProductosPorCategoria(@PathVariable Long id_categoria){
       return productoService.encontrarProductosPorCategoria(id_categoria);
     }
     
-    @GetMapping
-    public List<Producto> listarProducto() {
-        return this.productoService.listarProducto();
+    @GetMapping("/ventas")
+    public List<Producto> listarProductosVentas() {
+        return this.productoService.consultarProductosVentas();
+    }
+
+    @GetMapping("/bodega")
+    public List<Producto> listarProductosBodega() {
+        return this.productoService.listarProductosBodega();
     }
 
     @GetMapping("/{id}")

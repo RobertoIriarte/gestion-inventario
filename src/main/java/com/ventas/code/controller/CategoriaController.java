@@ -17,6 +17,7 @@ public class CategoriaController {
   
   @PostMapping("/guardarCategoria")
   public Categoria guardarCategoria(@RequestBody Categoria categoria) {
+    categoria.setActivo(Byte.parseByte("1"));
     return categoriaService.guardarCategoria(categoria);
   }
   
@@ -32,6 +33,7 @@ public class CategoriaController {
   
   @PutMapping("/actualizarCategoria")
   public Categoria actualizarCategoria(@RequestBody Categoria categoria){
+    categoria.setActivo(Byte.parseByte("1"));
     return categoriaService.actualizarCategoria(categoria);
   }
 

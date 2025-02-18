@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ventas.code.model.Cliente;
+import com.ventas.code.model.Producto;
 import com.ventas.code.repository.ClienteRepository;
 
 import java.util.List;
@@ -33,7 +34,12 @@ public class ClienteService {
     }
 
     public void eliminarCliente(Integer id) {
-        this.clienteRepository.deleteById(id);
+        //this.clienteRepository.deleteById(id);
+        if(!clienteRepository.findById(id).isEmpty()) {
+            Cliente cliente = clienteRepository.findById(id).get();
+            cliente.setActivo(Byte.parseByte("0"));
+            this.clienteRepository.save(cliente);
+        }
     }
 
     public String verificarSiExiteCliente(String rut) {

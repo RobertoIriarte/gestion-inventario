@@ -6,13 +6,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.ventas.code.model.Categoria;
 import com.ventas.code.model.Producto;
 
 import java.util.List;
 
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
+  
+  @Query(value = "SELECT * FROM producto where activo = 1 and categoria_id = 1", nativeQuery = true)
+  public List<Producto> findAllActivoVentas();
+
+  @Query(value = "SELECT * FROM producto where activo = 1 and categoria_id != 1", nativeQuery = true)
+  public List<Producto> findAllActivoBodega();
 
   @Query(value = "SELECT codigo as cod_producto FROM producto where codigo = :cod_producto", nativeQuery = true)
   public String verificarSiExiteElCodProducto(@Param("cod_producto") String cod_producto);

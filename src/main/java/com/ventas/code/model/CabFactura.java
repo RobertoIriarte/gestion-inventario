@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -18,22 +20,27 @@ public class CabFactura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_factura")
     private Integer idFcatura;
+    
     @Column(name = "num_factura")
     private Integer numeroFactura;
+
     @Column(name = "rut_cliente")
     private String rutCliente;
 
     @Column(name = "subtotal", columnDefinition = "DECIMAL(10,2)")
     private String subtotal;
+
     @Column(name = "igv", columnDefinition = "DECIMAL(10,2)")
     private String igv;
+
     @Column(name = "total", columnDefinition = "DECIMAL(10,2)")
     private String total;
-
 
     @JsonManagedReference
     @OneToMany(mappedBy = "pkCabFactura", cascade = CascadeType.ALL)
     private List<DetFactura> detFactura;
 
+    @Column
+    private LocalDate fechaCreacion;
 
 }

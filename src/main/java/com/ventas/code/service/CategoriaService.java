@@ -14,7 +14,7 @@ public class CategoriaService {
   private CategoriaRepository categoriaRepository;
   
   public List<Categoria> consultarCategorias(){
-    return categoriaRepository.findAll();
+    return categoriaRepository.findAllActivo();
   }
   
   public Categoria guardarCategoria(Categoria categoria){
@@ -29,14 +29,9 @@ public class CategoriaService {
     }
   }
   
-  /*public Categoria encontrarCategoriaPorSku(String sku){
-    return categoriaRepository.findBySku(sku);
-  }*/
-  
   public Categoria actualizarCategoria(Categoria categoria){
     if(!categoriaRepository.findById(categoria.getCategoria_id()).isEmpty()){
       Categoria categoriaActualizar = categoriaRepository.findById(categoria.getCategoria_id()).get();
-      //categoriaActualizar.setSku(categoria.getSku());
       categoriaActualizar.setNombre(categoria.getNombre());
       categoriaActualizar.setDescripcion(categoria.getDescripcion());
     return categoriaRepository.save(categoriaActualizar);
@@ -47,7 +42,10 @@ public class CategoriaService {
   
   public boolean eliminarCategoria(Long categoria_id){
     if(!categoriaRepository.findById(categoria_id).isEmpty()){
-      categoriaRepository.deleteById(categoria_id);
+      //categoriaRepository.deleteById(categoria_id);
+      Categoria catEliminar = categoriaRepository.findById(categoria_id).get();
+      catEliminar.setActivo(Byte.parseByte("0"));
+      categoriaRepository.save(catEliminar);
       return true;
     } else{
       return false;

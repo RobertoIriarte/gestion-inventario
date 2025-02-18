@@ -9,19 +9,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Categoria")
-public class Categoria {
+@Table(name="Medida")
+public class Medida {
   
   @Id  
   @Column  
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long categoria_id;
+  private Long medida_id;
   
+  @Column
+  private String codigo;
+
   @Column
   private String nombre;
-  
-  @Column
-  private String descripcion;
 
   @Column(columnDefinition = "TINYINT")
   private Byte activo;

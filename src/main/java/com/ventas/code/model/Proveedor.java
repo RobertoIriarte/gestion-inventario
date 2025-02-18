@@ -38,5 +38,8 @@ public class Proveedor {
 
     @Column
     private LocalDate fechaCreacion;
+
+    @Column(columnDefinition = "TINYINT")
+    private Byte activo;
     
 }
