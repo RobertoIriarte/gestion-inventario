@@ -53,7 +53,7 @@ public class CabFacturaController {
     }
 
     @GetMapping("/{fecha}")
-    public ResponseEntity<List<CabFactura>> obtenerFacturaPorId(@PathVariable("fecha") LocalDate fecha) {
+    public ResponseEntity<List<CabFactura>> obtenerFacturaPorFecha(@PathVariable("fecha") LocalDate fecha) {
         List<CabFactura> cabeceras = cabFacturaService.obtenerFacturasPorFecha(fecha);
         return new ResponseEntity<>(cabeceras, HttpStatus.OK);
     }
