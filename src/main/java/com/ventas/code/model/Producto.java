@@ -22,8 +22,8 @@ public class Producto {
   @Column
   private Long categoria_id;
   
-  @Column
-  private String codigo;
+  /*@Column
+  private String codigo;*/
 
   @Column
   private String nombre;

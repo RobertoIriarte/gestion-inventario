@@ -15,7 +15,6 @@ public class ProductoDTO {
   
   private Long producto_id;  
   private Long categoria_id;
-  private String codigo;
   private String nombre;
   private Double precio;
   private Double stock;
@@ -25,7 +24,6 @@ public class ProductoDTO {
   public Producto obtenerProducto(ProductoDTO  productoDTO){
     Producto producto = new Producto();
     producto.setProducto_id(productoDTO.getProducto_id());
-    producto.setCodigo(productoDTO.getCodigo());
     producto.setNombre(productoDTO.getNombre());
     producto.setPrecio(productoDTO.getPrecio());
     producto.setStock(productoDTO.getStock());
