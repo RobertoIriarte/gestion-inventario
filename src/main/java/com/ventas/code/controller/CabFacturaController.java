@@ -27,7 +27,7 @@ public class CabFacturaController {
         return new ResponseEntity<>(cabeceras, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/factura/{id}")
     public ResponseEntity<CabFactura> obtenerFacturaPorId(@PathVariable("id") Integer id) {
         return cabFacturaService.obtenerPorId(id)
                 .map(factura -> new ResponseEntity<>(factura, HttpStatus.OK))
