@@ -35,6 +35,9 @@ public class Producto {
   private Double stock;
 
   @Column
+  private Long medida_id;
+
+  @Column
   private Double stockCritico;
 
   @Column
