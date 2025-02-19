@@ -28,6 +28,7 @@ public class DetFacturaService {
     public void insertarFacturas(List<DetFacturaDTO> detFacturaDTOs) {
         for (DetFacturaDTO detFacturaDTO : detFacturaDTOs) {
             this.detFacturaRepository.insertarFactura(  detFacturaDTO.getCodigoProducto(),
+                                                        detFacturaDTO.getPrecio(),
                                                         detFacturaDTO.getCantidad(),
                                                         detFacturaDTO.getPkCabFactura()
                                                       );

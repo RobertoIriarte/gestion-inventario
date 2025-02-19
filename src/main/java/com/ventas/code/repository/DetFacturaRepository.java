@@ -12,6 +12,6 @@ public interface DetFacturaRepository extends JpaRepository<DetFactura, Integer>
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO det_factura (codigo_producto, cantidad, pk_cab_factura) VALUES (?1, ?2, ?3)", nativeQuery = true)
-    void insertarFactura(Long codigoProducto, Integer cantidad, Integer pkCabFactura);
+    @Query(value = "INSERT INTO det_factura (codigo_producto, precio, cantidad, pk_cab_factura) VALUES (?1, ?2, ?3,?4)", nativeQuery = true)
+    void insertarFactura(Long codigoProducto, String precio, Integer cantidad, Integer pkCabFactura);
 }

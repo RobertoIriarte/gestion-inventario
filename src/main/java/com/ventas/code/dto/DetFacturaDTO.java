@@ -12,6 +12,7 @@ import lombok.Setter;
 public class DetFacturaDTO {
 
     private Long codigoProducto;
+    private String precio;
     private Integer cantidad;
     private Integer pkCabFactura;
 

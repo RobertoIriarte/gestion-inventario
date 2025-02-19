@@ -18,6 +18,10 @@ public class DetFactura {
     @Column(name = "codigo_producto")
     private Long codigoProducto;
 
+    @Column(name = "precio", columnDefinition = "DECIMAL(10,2)")
+    private String precio;
+
+    @Column
     private Integer cantidad;
 
     @JsonBackReference
