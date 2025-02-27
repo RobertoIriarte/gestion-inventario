@@ -23,7 +23,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
   public String verificarSiExiteElCodProducto(@Param("cod_producto") String cod_producto);
 
   @Modifying
-  @Query(value = "UPDATE producto SET stock = stock - :cantidad WHERE codigo = :id_producto", nativeQuery = true)
+  @Query(value = "UPDATE producto SET stock = stock - :cantidad WHERE producto_id = :id_producto", nativeQuery = true)
   public Integer disminuirStock(@Param("id_producto") Long id_producto, @Param("cantidad") Integer cantidad);
   
   //public Producto findBySku(String sku);
